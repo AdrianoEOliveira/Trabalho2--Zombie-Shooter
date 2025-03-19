@@ -1,9 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 public class playerMovement : MonoBehaviour
 {
     private CharacterController controller;
-    [Header("Movement Settings")]
     [SerializeField] private float speed = 12f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 3f;
@@ -18,17 +18,42 @@ public class playerMovement : MonoBehaviour
 
     private Vector3 lastPosition = Vector3.zero;
 
+    private int vidas = 3;
+
+    [SerializeField] private TextMeshPro vidasText; // Referência ao TextMeshPro de balas
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        vidasText = GameObject.FindWithTag("Vidas").GetComponent<TextMeshPro>();
+        atualziarVidas();
         
     }
 
     // Update is called once per frame
     void Update()
+    {
+        LogicaMovimento();  
+    }
+    
+    public void aplicarDano()
+    {
+        if(vidas>0)
+        {
+            vidas--;
+            atualziarVidas();
+        }
+        else
+        {
+            //game over
+        }
+    }
+
+
+    void LogicaMovimento()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
@@ -62,5 +87,11 @@ public class playerMovement : MonoBehaviour
             isMoving = false;
         }
         lastPosition = transform.position;
+    }
+
+    void atualziarVidas()
+    {
+        vidasText.text = "Vidas: " + vidas + "/3";
+        
     }
 }

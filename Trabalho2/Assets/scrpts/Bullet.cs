@@ -13,11 +13,19 @@ public class Bullet : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+            //Destroy(collision.gameObject);
+        //}
+    //}
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Zombie"))
         {
-            Destroy(collision.gameObject);
+            Debug.Log("Zombie hit!");
+            Destroy(other.gameObject);
         }
     }
 }

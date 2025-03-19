@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using TMPro; // Para utilizar o TextMeshPro
 
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float range = 100f;
-    [SerializeField] private float fireRate = 15f; // Número de disparos por segundo
+    [SerializeField] private float fireRate = 15f;
     [SerializeField] private float impactForce = 30f;
 
     [SerializeField] private GameObject bulletPrefab;
@@ -20,26 +21,37 @@ public class Weapon : MonoBehaviour
     private bool isReloading = false; // Para evitar disparos durante o recarregamento
     [SerializeField] private float reloadTime = 2f; // Tempo de recarga
 
+    [Header("HUD Settings")]
+    [SerializeField] private TextMeshPro ammoText; // Referência ao TextMeshPro de balas
+    [SerializeField] private TextMeshPro reloadText; // Referência ao TextMeshPro de recarga
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UpdateAmmoText(); // Inicializa a quantidade de balas na HUD
+        reloadText.gameObject.SetActive(false); // Esconde a mensagem de recarga inicialmente
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Se estiver recarregando, não faz nada até o tempo de recarga passar
         if (isReloading)
             return;
 
-        // Automático: dispare enquanto o botão estiver pressionado, mas respeitando o limite de munição
+        // Semi-automático: um tiro por clique
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && currentAmmo > 0)
+        {
+            Shoot();
+            nextFireTime = Time.time + 1f / fireRate;
+        }
+
+        // Automático: dispare enquanto o botão estiver pressionado
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime && currentAmmo > 0)
         {
             Shoot();
-            nextFireTime = Time.time + 1f / fireRate; // Define o próximo tempo permitido para o disparo
+            nextFireTime = Time.time + 1f / fireRate;
         }
 
-        // Verifica se a munição acabou e inicia o processo de recarga
         if (currentAmmo <= 0 && !isReloading)
         {
             StartCoroutine(Reload());
@@ -56,6 +68,7 @@ public class Weapon : MonoBehaviour
 
         // Reduz a munição
         currentAmmo--;
+        UpdateAmmoText(); // Atualiza a quantidade de balas na HUD
     }
 
     private IEnumerator DestroyBullet(GameObject bullet)
@@ -68,7 +81,7 @@ public class Weapon : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Recargando...");
+        reloadText.gameObject.SetActive(true); // Exibe a mensagem de recarga
 
         // Espera o tempo de recarga passar
         yield return new WaitForSeconds(reloadTime);
@@ -77,6 +90,12 @@ public class Weapon : MonoBehaviour
         currentAmmo = maxAmmo;
         isReloading = false;
 
-        Debug.Log("Recarga completa!");
+        reloadText.gameObject.SetActive(false); // Esconde a mensagem de recarga
+        UpdateAmmoText(); // Atualiza a HUD com a munição recarregada
+    }
+
+    private void UpdateAmmoText()
+    {
+        ammoText.text = "Bullets: " + currentAmmo + " / " + maxAmmo; // Atualiza o texto de balas
     }
 }
