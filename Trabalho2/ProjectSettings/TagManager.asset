@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Bullet
+  - Corpo
+  - Vidas
+  - Zombie
   layers:
   - Default
   - TransparentFX
