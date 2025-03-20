@@ -9,6 +9,8 @@ TagManager:
   - Vidas
   - Zombie
   - Wall
+  - Time
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,12 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");  // Encontra o jogador na cena
+        enemyPrefab = Resources.Load<GameObject>("Prefabs/Zombie");  // Carrega o prefab do inimigo
+        if (enemyPrefab == null)
+        {
+            Debug.LogError("Enemy Prefab não atribuído!");
+        }
+        player = Resources.Load<GameObject>("Prefabs/Player");  // Carrega o prefab do jogador
         if (player == null)
         {
             Debug.LogError("Player não atribuído!");

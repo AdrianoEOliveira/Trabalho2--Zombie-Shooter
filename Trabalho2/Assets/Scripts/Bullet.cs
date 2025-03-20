@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public GameObject gameController; // Referência ao GameController
+     private bool hasActivated = false;  // Flag para garantir que só execute uma vez
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,17 +23,21 @@ public class Bullet : MonoBehaviour
             //Destroy(collision.gameObject);
         //}
     //}
-    private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
     {
+        if (hasActivated) return;  // Impede que o código rode mais de uma vez
+
         if (other.gameObject.CompareTag("Zombie"))
         {
+            hasActivated = true;  // Marca como ativado
             Debug.Log("Zombie hit!");
             gameController.GetComponent<GameController>().IncreaseEnemiesDefeated();
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
-        if(other.gameObject.CompareTag("Wall"))
+        else if (other.gameObject.CompareTag("Wall"))
         {
+            hasActivated = true;  // Marca como ativado também para a parede
             Destroy(gameObject);
         }
     }

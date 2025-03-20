@@ -20,6 +20,8 @@ public class playerMovement : MonoBehaviour
 
     private int vidas = 3;
 
+    public bool isDeath = false;
+
     [SerializeField] private TextMeshPro vidasText; // Referência ao TextMeshPro de balas
 
     public GameObject gameController; // Referência ao GameController
@@ -39,7 +41,8 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LogicaMovimento();  
+        LogicaMovimento();
+        Death();  
     }
     
     public void aplicarDano()
@@ -49,10 +52,20 @@ public class playerMovement : MonoBehaviour
             vidas--;
             atualziarVidas();
             gameController.GetComponent<GameController>().DecreasePlayerLife();
+            Debug.Log("Vidas: " + vidas);
+            if(vidas == 0)
+            {
+                isDeath = true;
+            }
         }
-        else
+    }
+
+    void Death()
+    {
+        if(isDeath)
         {
-            //game over
+            Debug.Log("Game Over");
+            gameController.GetComponent<GameController>().GameOver();
         }
     }
 
