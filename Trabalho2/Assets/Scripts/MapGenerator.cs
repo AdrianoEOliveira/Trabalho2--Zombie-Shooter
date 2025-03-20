@@ -38,12 +38,13 @@ public class MapGenerator : MonoBehaviour
     {
     playerSpawnPrefab = Resources.Load<GameObject>("Prefabs/PlayerSpawn");
     enemySpawnPrefab = Resources.Load<GameObject>("Prefabs/EnemySpawn");
+    GenerateMap();
     }
 
-    void Start()
-    {
-        GenerateMap();
-    }
+    //void Start()
+    //{
+        //GenerateMap();
+    //}
 
     public void GenerateMap()
     {
@@ -149,9 +150,9 @@ private void GenerateRooms()
 }
 
 
-        [ContextMenu("Gerar Novo Mapa XZ")]
-        private void GenerateNewMap()
-        {
-            GenerateMap();
-        }
+        //[ContextMenu("Gerar Novo Mapa XZ")]
+        //private void GenerateNewMap()
+        //{
+            //GenerateMap();
+        //}
     }
