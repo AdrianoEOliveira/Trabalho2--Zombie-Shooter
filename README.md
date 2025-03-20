@@ -1,4 +1,5 @@
 # Trabalho2--Zombie-Shooter
+# Autor : Adriano Eiterer Oliveira
 
 # Assets
 https://assetstore.unity.com/packages/3d/props/guns/low-poly-fps-weapons-lite-245929
