@@ -27,5 +27,9 @@ public class Bullet : MonoBehaviour
             Debug.Log("Zombie hit!");
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

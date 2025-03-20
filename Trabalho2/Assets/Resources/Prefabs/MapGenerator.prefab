@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6142063825904501548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952100098618482857}
+  - component: {fileID: 4779111796645421662}
+  - component: {fileID: 1575756987474682139}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952100098618482857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142063825904501548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4779111796645421662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142063825904501548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!114 &1575756987474682139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142063825904501548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cceb1a9b90071241af886893015d21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxIteracoes: 200
+  stepDistance: 10
+  roomPrefab: {fileID: 4830492993741445927, guid: 726d3d3b1a9962340850c7a6e25aaf5c, type: 3}
+  roomNorthWallPrefab: {fileID: 4395573090863681915, guid: df02139cc92b73642b70806d97c9d1a1, type: 3}
+  roomSouthWallPrefab: {fileID: 1889172871511825906, guid: 9c0b9b3747302574f922b388fe4843fb, type: 3}
+  roomWestWallPrefab: {fileID: 7614405808381711258, guid: 5b74495790fa0f748a03df96be667893, type: 3}
+  roomEastWallPrefab: {fileID: 3618303634352711171, guid: 7c0fc70582b8e74419dd8576c17443ba, type: 3}
+  playerSpawnPrefab: {fileID: 506048485004828985, guid: 79101868fbb095f4c882d1af8c6c9f09, type: 3}
+  enemySpawnPrefab: {fileID: 8906352258583814381, guid: 6eb214fcfd0d15949b5498a5260e36b3, type: 3}
+  alturaSalas: 0
+  _currentPosition: {x: 0, y: 0, z: 0}
+  surface: {fileID: 4779111796645421662}
