@@ -8,8 +8,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private float spawnInterval = 5f;  // Intervalo inicial de spawn (5 segundos)
     private float spawnTimer = 0f;  // Timer de contagem para o próximo spawn
-
-    private float speedIncreaseInterval = 10f;  // Intervalo para aumentar a velocidade (em segundos)
     private float spawnSpeedMultiplier = 1.1f;  // Multiplicador para aumentar a velocidade
 
     void Start()
@@ -24,6 +22,7 @@ public class EnemySpawnManager : MonoBehaviour
     void Update()
     {
         spawnTimer += Time.deltaTime;
+        
 
         // Verifica se o tempo de spawn foi atingido
         if (spawnTimer >= spawnInterval && !IsPlayerNearby())

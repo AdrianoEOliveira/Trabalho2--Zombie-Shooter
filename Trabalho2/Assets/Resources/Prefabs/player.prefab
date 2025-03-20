@@ -869,6 +869,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   vidasText: {fileID: 0}
+  gameController: {fileID: 5848243055675775838, guid: 389808a18d450ab41982070fb07fed1f, type: 3}
 --- !u!143 &9077402595875603578
 CharacterController:
   m_ObjectHideFlags: 0

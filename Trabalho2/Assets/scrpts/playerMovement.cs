@@ -22,6 +22,8 @@ public class playerMovement : MonoBehaviour
 
     [SerializeField] private TextMeshPro vidasText; // Referência ao TextMeshPro de balas
 
+    public GameObject gameController; // Referência ao GameController
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +47,7 @@ public class playerMovement : MonoBehaviour
         {
             vidas--;
             atualziarVidas();
+            gameController.GetComponent<GameController>().DecreasePlayerLife();
         }
         else
         {
