@@ -43,8 +43,8 @@ public class GameController : MonoBehaviour
     {
         isGameOver = true;
         // Carregar a cena de score e passar os dados para ela
-        SceneManager.LoadScene("ScoreScene", LoadSceneMode.Single);
-        PlayerPrefs.SetFloat("SurvivalTime", survivalTime);  // Armazena o tempo de sobrevivência
         PlayerPrefs.SetInt("EnemiesDefeated", enemiesDefeated);  // Armazena o número de inimigos derrotados
+        PlayerPrefs.SetFloat("SurvivalTime", survivalTime);  // Armazena o tempo de sobrevivência
+        SceneManager.LoadScene("ScoreScene", LoadSceneMode.Single);
     }
 }

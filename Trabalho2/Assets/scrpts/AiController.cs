@@ -51,10 +51,4 @@ public class AIController : MonoBehaviour
         }
     }
 
-    // Gizmo para visualização do raio de detecção
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
-    }
 }

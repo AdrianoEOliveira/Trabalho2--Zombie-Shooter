@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject gameController; // Referência ao GameController
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameController = GameObject.FindWithTag("GameController");
         
     }
 
@@ -25,6 +27,8 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Zombie"))
         {
             Debug.Log("Zombie hit!");
+            gameController.GetComponent<GameController>().IncreaseEnemiesDefeated();
+            Destroy(gameObject);
             Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("Wall"))

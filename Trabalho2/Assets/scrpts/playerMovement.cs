@@ -32,6 +32,7 @@ public class playerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         vidasText = GameObject.FindWithTag("Vidas").GetComponent<TextMeshPro>();
         atualziarVidas();
+        gameController = GameObject.FindWithTag("GameController");
         
     }
 
